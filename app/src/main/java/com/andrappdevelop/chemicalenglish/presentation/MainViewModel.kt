@@ -20,7 +20,7 @@ class MainViewModel(
         liveDataWrapper.update(UiState.ShowProgress)
         viewModelScope.launch {
             val result = repository.load()
-            liveDataWrapper.update(UiState.ShowData(result))
+            liveDataWrapper.update(UiState.ShowData(result.text))
         }
     }
 }
