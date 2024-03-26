@@ -2,7 +2,7 @@ package com.andrappdevelop.chemicalenglish.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.andrappdevelop.chemicalenglish.SingleLiveEvent
+import com.andrappdevelop.chemicalenglish.core.SingleLiveEvent
 
 interface LiveDataWrapper {
 

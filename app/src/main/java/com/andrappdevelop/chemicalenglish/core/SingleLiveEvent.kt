@@ -1,4 +1,4 @@
-package com.andrappdevelop.chemicalenglish
+package com.andrappdevelop.chemicalenglish.core
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
