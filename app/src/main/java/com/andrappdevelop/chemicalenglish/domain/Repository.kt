@@ -2,5 +2,5 @@ package com.andrappdevelop.chemicalenglish.domain
 
 interface Repository {
 
-    suspend fun load(): LoadResult
+    suspend fun load(): SimpleResponse
 }
