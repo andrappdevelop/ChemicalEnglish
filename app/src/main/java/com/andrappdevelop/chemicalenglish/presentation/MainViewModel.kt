@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class MainViewModel(
     private val liveDataWrapper: LiveDataWrapper.Mutable,
@@ -19,11 +20,22 @@ class MainViewModel(
     fun load() {
         liveDataWrapper.update(UiState.ShowProgress)
         viewModelScope.launch {
-            val randomIndex = (0..1).random()
-            val result = repository.load()[randomIndex]
-            val englishWord = result.englishWord
-            val russianWord = result.russianWord
-            liveDataWrapper.update(UiState.ShowData(englishWord, russianWord))
+            val result = repository.load()
+            val randomIndex = Random.nextInt(result.size)
+            val englishWord = result[randomIndex].englishWord
+            val russianWord = result[randomIndex].russianWord
+            val fakeRussianWordOne = repository.load()[Random.nextInt(result.size)].russianWord
+            val fakeRussianWordTwo = repository.load()[Random.nextInt(result.size)].russianWord
+            val fakeRussianWordThree = repository.load()[Random.nextInt(result.size)].russianWord
+            liveDataWrapper.update(
+                UiState.ShowData(
+                    englishWord,
+                    russianWord,
+                    fakeRussianWordOne,
+                    fakeRussianWordTwo,
+                    fakeRussianWordThree
+                )
+            )
         }
     }
 }

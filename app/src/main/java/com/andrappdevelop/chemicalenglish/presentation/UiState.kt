@@ -41,7 +41,10 @@ interface UiState {
 
     data class ShowData(
         private val englishWord: String,
-        private val russianWord: String
+        private val russianWord: String,
+        private val fakeRussianWordOne: String,
+        private val fakeRussianWordTwo: String,
+        private val fakeRussianWordThree: String,
     ) : UiState {
         override fun show(
             englishWordTextView: TextView,
@@ -57,9 +60,12 @@ interface UiState {
             englishWordTextView.text = englishWord
             answerOneTextView.visibility = View.VISIBLE
             answerOneTextView.text = russianWord
-            answerTwoTextView.visibility = View.INVISIBLE
-            answerThreeTextView.visibility = View.INVISIBLE
-            answerFourTextView.visibility = View.INVISIBLE
+            answerTwoTextView.visibility = View.VISIBLE
+            answerTwoTextView.text = fakeRussianWordOne
+            answerThreeTextView.visibility = View.VISIBLE
+            answerThreeTextView.text = fakeRussianWordTwo
+            answerFourTextView.visibility = View.VISIBLE
+            answerFourTextView.text = fakeRussianWordThree
 //            progressBar.visibility = View.INVISIBLE
             checkButton.isEnabled = true
             nextButton.isEnabled = true
