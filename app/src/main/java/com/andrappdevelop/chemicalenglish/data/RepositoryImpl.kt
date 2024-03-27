@@ -7,7 +7,7 @@ class RepositoryImpl(
     private val service: SimpleService,
     private val url: String
 ) : Repository {
-    override suspend fun load(): SimpleResponse {
+    override suspend fun load(): List<SimpleResponse> {
         return service.fetch(url)
     }
 }

@@ -19,7 +19,8 @@ class MainViewModel(
     fun load() {
         liveDataWrapper.update(UiState.ShowProgress)
         viewModelScope.launch {
-            val result = repository.load()
+            val randomIndex = (0..1).random()
+            val result = repository.load()[randomIndex]
             val englishWord = result.englishWord
             val russianWord = result.russianWord
             liveDataWrapper.update(UiState.ShowData(englishWord, russianWord))
