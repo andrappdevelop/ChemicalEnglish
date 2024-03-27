@@ -39,7 +39,10 @@ interface UiState {
         }
     }
 
-    data class ShowData(private val result: String) : UiState {
+    data class ShowData(
+        private val englishWord: String,
+        private val russianWord: String
+    ) : UiState {
         override fun show(
             englishWordTextView: TextView,
             answerOneTextView: Button,
@@ -51,8 +54,9 @@ interface UiState {
             nextButton: Button
         ) {
             englishWordTextView.visibility = View.VISIBLE
-            englishWordTextView.text = result
-            answerOneTextView.visibility = View.INVISIBLE
+            englishWordTextView.text = englishWord
+            answerOneTextView.visibility = View.VISIBLE
+            answerOneTextView.text = russianWord
             answerTwoTextView.visibility = View.INVISIBLE
             answerThreeTextView.visibility = View.INVISIBLE
             answerFourTextView.visibility = View.INVISIBLE

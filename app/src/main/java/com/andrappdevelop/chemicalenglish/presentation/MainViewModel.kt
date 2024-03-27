@@ -20,7 +20,9 @@ class MainViewModel(
         liveDataWrapper.update(UiState.ShowProgress)
         viewModelScope.launch {
             val result = repository.load()
-            liveDataWrapper.update(UiState.ShowData(result.englishWord))
+            val englishWord = result.englishWord
+            val russianWord = result.russianWord
+            liveDataWrapper.update(UiState.ShowData(englishWord, russianWord))
         }
     }
 }
