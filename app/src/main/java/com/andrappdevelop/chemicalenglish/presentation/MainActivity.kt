@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         val answerTwoTextView: Button = findViewById(R.id.answerTwoTextView)
         val answerThreeTextView: Button = findViewById(R.id.answerThreeTextView)
         val answerFourTextView: Button = findViewById(R.id.answerFourTextView)
-//        val progressBar: ProgressBar
         val checkButton: Button = findViewById(R.id.checkButton)
         val nextButton: Button = findViewById(R.id.nextButton)
 
@@ -35,32 +34,26 @@ class MainActivity : AppCompatActivity() {
         answerOneTextView.setOnClickListener {
             answer = answerOneTextView.text.toString()
             view = it
-            viewModel.changeColor(it)
         }
 
         answerTwoTextView.setOnClickListener {
             answer = answerTwoTextView.text.toString()
             view = it
-            viewModel.changeColor(it)
         }
 
         answerThreeTextView.setOnClickListener {
             answer = answerThreeTextView.text.toString()
             view = it
-            viewModel.changeColor(it)
         }
 
         answerFourTextView.setOnClickListener {
             answer = answerFourTextView.text.toString()
             view = it
-            viewModel.changeColor(it)
         }
 
         checkButton.setOnClickListener {
             val bool = viewModel.checkAnswer(answer)
             nextButton.isEnabled = bool
-            if (bool)
-                viewModel.setGreenColor(view)
         }
 
         viewModel.liveData().observe(this) {

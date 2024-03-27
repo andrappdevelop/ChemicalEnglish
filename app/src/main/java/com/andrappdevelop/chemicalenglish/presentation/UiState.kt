@@ -13,7 +13,6 @@ interface UiState {
         answerTwoTextView: Button,
         answerThreeTextView: Button,
         answerFourTextView: Button,
-//        progressBar: ProgressBar,
         checkButton: Button,
         nextButton: Button
     )
@@ -25,7 +24,6 @@ interface UiState {
             answerTwoTextView: Button,
             answerThreeTextView: Button,
             answerFourTextView: Button,
-//            progressBar: ProgressBar,
             checkButton: Button,
             nextButton: Button
         ) {
@@ -34,7 +32,6 @@ interface UiState {
             answerTwoTextView.visibility = View.INVISIBLE
             answerThreeTextView.visibility = View.INVISIBLE
             answerFourTextView.visibility = View.INVISIBLE
-//            progressBar.visibility = View.VISIBLE
             checkButton.isEnabled = false
             nextButton.isEnabled = true
         }
@@ -52,7 +49,6 @@ interface UiState {
             answerTwoTextView: Button,
             answerThreeTextView: Button,
             answerFourTextView: Button,
-//            progressBar: ProgressBar,
             checkButton: Button,
             nextButton: Button
         ) {
@@ -66,7 +62,6 @@ interface UiState {
             answerThreeTextView.text = answerWordTwo.russianWord
             answerFourTextView.visibility = View.VISIBLE
             answerFourTextView.text = answerWordThree.russianWord
-//            progressBar.visibility = View.INVISIBLE
             checkButton.isEnabled = true
             nextButton.isEnabled = false
         }
