@@ -1,5 +1,7 @@
 package com.andrappdevelop.chemicalenglish.presentation
 
+import android.graphics.Color
+import android.view.View
 import androidx.lifecycle.ViewModel
 import com.andrappdevelop.chemicalenglish.domain.MainInteractor
 import com.andrappdevelop.chemicalenglish.domain.SimpleResponse
@@ -45,5 +47,13 @@ class MainViewModel(
 
     fun checkAnswer(answer: String): Boolean {
         return interactor.checkCorrectWord(answer, questionWord.russianWord)
+    }
+
+    fun changeColor(view: View) {
+        view.setBackgroundColor(Color.GRAY)
+    }
+
+    fun setGreenColor(view: View) {
+        view.setBackgroundColor(Color.GREEN)
     }
 }
