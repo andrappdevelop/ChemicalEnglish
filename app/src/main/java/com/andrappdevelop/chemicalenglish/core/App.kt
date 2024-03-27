@@ -26,6 +26,6 @@ class App : Application() {
 
     companion object {
         private const val BASE_URL =
-            "https://raw.githubusercontent.com/JohnnySC/ZeroToHeroAndroidTDD/task/018-clouddatasource/app/sampleresponse.json"
+            "https://raw.githubusercontent.com/andrappdevelop/ChemicalEnglish/master/app/words.json"
     }
 }
