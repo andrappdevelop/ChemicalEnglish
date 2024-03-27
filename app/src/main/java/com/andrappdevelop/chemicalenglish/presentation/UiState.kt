@@ -3,6 +3,7 @@ package com.andrappdevelop.chemicalenglish.presentation
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import com.andrappdevelop.chemicalenglish.domain.SimpleResponse
 
 interface UiState {
 
@@ -40,11 +41,10 @@ interface UiState {
     }
 
     data class ShowData(
-        private val englishWord: String,
-        private val russianWord: String,
-        private val fakeRussianWordOne: String,
-        private val fakeRussianWordTwo: String,
-        private val fakeRussianWordThree: String,
+        private val questionWord: SimpleResponse,
+        private val answerWordOne: SimpleResponse,
+        private val answerWordTwo: SimpleResponse,
+        private val answerWordThree: SimpleResponse
     ) : UiState {
         override fun show(
             englishWordTextView: TextView,
@@ -57,15 +57,15 @@ interface UiState {
             nextButton: Button
         ) {
             englishWordTextView.visibility = View.VISIBLE
-            englishWordTextView.text = englishWord
+            englishWordTextView.text = questionWord.englishWord
             answerOneTextView.visibility = View.VISIBLE
-            answerOneTextView.text = russianWord
+            answerOneTextView.text = questionWord.russianWord
             answerTwoTextView.visibility = View.VISIBLE
-            answerTwoTextView.text = fakeRussianWordOne
+            answerTwoTextView.text = answerWordOne.russianWord
             answerThreeTextView.visibility = View.VISIBLE
-            answerThreeTextView.text = fakeRussianWordTwo
+            answerThreeTextView.text = answerWordTwo.russianWord
             answerFourTextView.visibility = View.VISIBLE
-            answerFourTextView.text = fakeRussianWordThree
+            answerFourTextView.text = answerWordThree.russianWord
 //            progressBar.visibility = View.INVISIBLE
             checkButton.isEnabled = true
             nextButton.isEnabled = true

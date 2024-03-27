@@ -22,18 +22,13 @@ class MainViewModel(
         viewModelScope.launch {
             val result = repository.load()
             val randomIndex = Random.nextInt(result.size)
-            val englishWord = result[randomIndex].englishWord
-            val russianWord = result[randomIndex].russianWord
-            val fakeRussianWordOne = repository.load()[Random.nextInt(result.size)].russianWord
-            val fakeRussianWordTwo = repository.load()[Random.nextInt(result.size)].russianWord
-            val fakeRussianWordThree = repository.load()[Random.nextInt(result.size)].russianWord
+            val questionWord = result[randomIndex]
+            val answerWordOne = result[Random.nextInt(result.size)]
+            val answerWordTwo = result[Random.nextInt(result.size)]
+            val answerWordThree = result[Random.nextInt(result.size)]
             liveDataWrapper.update(
                 UiState.ShowData(
-                    englishWord,
-                    russianWord,
-                    fakeRussianWordOne,
-                    fakeRussianWordTwo,
-                    fakeRussianWordThree
+                    questionWord, answerWordOne, answerWordTwo, answerWordThree
                 )
             )
         }
