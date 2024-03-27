@@ -7,8 +7,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
-import kotlin.random.Random
 
 class MainViewModel(
     private val liveDataWrapper: LiveDataWrapper.Mutable,
@@ -18,7 +16,6 @@ class MainViewModel(
     private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     private lateinit var result: List<SimpleResponse>
-    private var randomIndex by Delegates.notNull<Int>()
     private lateinit var questionWord: SimpleResponse
     private lateinit var answerWordOne: SimpleResponse
     private lateinit var answerWordTwo: SimpleResponse
@@ -30,11 +27,11 @@ class MainViewModel(
         liveDataWrapper.update(UiState.ShowProgress)
         viewModelScope.launch {
             result = interactor.word()
-            randomIndex = Random.nextInt(result.size)
-            questionWord = result[randomIndex]
-            answerWordOne = result[Random.nextInt(result.size)]
-            answerWordTwo = result[Random.nextInt(result.size)]
-            answerWordThree = result[Random.nextInt(result.size)]
+            val index = result.indices.shuffled()
+            questionWord = result[index[0]]
+            answerWordOne = result[index[1]]
+            answerWordTwo = result[index[2]]
+            answerWordThree = result[index[3]]
             liveDataWrapper.update(
                 UiState.ShowData(
                     questionWord, answerWordOne, answerWordTwo, answerWordThree
