@@ -8,7 +8,9 @@ import com.andrappdevelop.chemicalenglish.R
 import com.andrappdevelop.chemicalenglish.core.App
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var viewModel: MainViewModel
+    private lateinit var answer: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,27 @@ class MainActivity : AppCompatActivity() {
 
         nextButton.setOnClickListener {
             viewModel.load()
+        }
+
+        answerOneTextView.setOnClickListener {
+            answer = answerOneTextView.text.toString()
+        }
+
+        answerTwoTextView.setOnClickListener {
+            answer = answerTwoTextView.text.toString()
+        }
+
+        answerThreeTextView.setOnClickListener {
+            answer = answerThreeTextView.text.toString()
+        }
+
+        answerFourTextView.setOnClickListener {
+            answer = answerFourTextView.text.toString()
+        }
+
+        checkButton.setOnClickListener {
+            val bool = viewModel.checkAnswer(answer)
+            nextButton.isEnabled = bool
         }
 
         viewModel.liveData().observe(this) {

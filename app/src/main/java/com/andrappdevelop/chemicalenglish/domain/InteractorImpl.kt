@@ -8,7 +8,7 @@ class InteractorImpl(
         return repository.load()
     }
 
-    override fun checkCorrectWord() {
-        TODO("Not yet implemented")
+    override fun checkCorrectWord(answerWord: String, correctWord: String): Boolean {
+        return answerWord == correctWord
     }
 }

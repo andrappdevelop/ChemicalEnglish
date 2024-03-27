@@ -3,6 +3,7 @@ package com.andrappdevelop.chemicalenglish.core
 import android.app.Application
 import com.andrappdevelop.chemicalenglish.data.RepositoryImpl
 import com.andrappdevelop.chemicalenglish.data.SimpleService
+import com.andrappdevelop.chemicalenglish.domain.InteractorImpl
 import com.andrappdevelop.chemicalenglish.presentation.LiveDataWrapper
 import com.andrappdevelop.chemicalenglish.presentation.MainViewModel
 import retrofit2.Retrofit
@@ -21,7 +22,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        viewModel = MainViewModel(LiveDataWrapper.Base(), RepositoryImpl(service, BASE_URL))
+        viewModel =
+            MainViewModel(LiveDataWrapper.Base(), InteractorImpl(RepositoryImpl(service, BASE_URL)))
     }
 
     companion object {

@@ -68,7 +68,7 @@ interface UiState {
             answerFourTextView.text = answerWordThree.russianWord
 //            progressBar.visibility = View.INVISIBLE
             checkButton.isEnabled = true
-            nextButton.isEnabled = true
+            nextButton.isEnabled = false
         }
     }
 }

@@ -4,5 +4,5 @@ interface MainInteractor {
 
     suspend fun word(): List<SimpleResponse>
 
-    fun checkCorrectWord()
+    fun checkCorrectWord(answerWord: String, correctWord: String): Boolean
 }

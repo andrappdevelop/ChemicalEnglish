@@ -2,10 +2,12 @@ package com.andrappdevelop.chemicalenglish.presentation
 
 import androidx.lifecycle.ViewModel
 import com.andrappdevelop.chemicalenglish.domain.MainInteractor
+import com.andrappdevelop.chemicalenglish.domain.SimpleResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 import kotlin.random.Random
 
 class MainViewModel(
@@ -15,17 +17,24 @@ class MainViewModel(
 
     private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
+    private lateinit var result: List<SimpleResponse>
+    private var randomIndex by Delegates.notNull<Int>()
+    private lateinit var questionWord: SimpleResponse
+    private lateinit var answerWordOne: SimpleResponse
+    private lateinit var answerWordTwo: SimpleResponse
+    private lateinit var answerWordThree: SimpleResponse
+
     fun liveData() = liveDataWrapper.liveData()
 
     fun load() {
         liveDataWrapper.update(UiState.ShowProgress)
         viewModelScope.launch {
-            val result = interactor.word()
-            val randomIndex = Random.nextInt(result.size)
-            val questionWord = result[randomIndex]
-            val answerWordOne = result[Random.nextInt(result.size)]
-            val answerWordTwo = result[Random.nextInt(result.size)]
-            val answerWordThree = result[Random.nextInt(result.size)]
+            result = interactor.word()
+            randomIndex = Random.nextInt(result.size)
+            questionWord = result[randomIndex]
+            answerWordOne = result[Random.nextInt(result.size)]
+            answerWordTwo = result[Random.nextInt(result.size)]
+            answerWordThree = result[Random.nextInt(result.size)]
             liveDataWrapper.update(
                 UiState.ShowData(
                     questionWord, answerWordOne, answerWordTwo, answerWordThree
@@ -34,7 +43,7 @@ class MainViewModel(
         }
     }
 
-    fun checkAnswer() {
-        interactor.checkCorrectWord()
+    fun checkAnswer(answer: String): Boolean {
+        return interactor.checkCorrectWord(answer, questionWord.russianWord)
     }
 }
