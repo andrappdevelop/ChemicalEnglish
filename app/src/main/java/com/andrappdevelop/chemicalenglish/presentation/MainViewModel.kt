@@ -39,7 +39,6 @@ class MainViewModel(
             )
         }
     }
-//
 
     fun checkAnswer(answer: String): Boolean {
         return interactor.checkCorrectWord(answer, questionWord.russianWord)
